@@ -1,8 +1,12 @@
+var fs = require('fs')
+
+fs.readFile(process.argv[2], (err, data) => {
+  if (err) throw err;
+  var text = data.toString();
+  var array = text.split('\n');
+  console.log(array.length - 1);
+
+});
 
 
 
-var count = 0;
-for(var i = 2; i < process.argv.length; i++){
-count += parseInt(process.argv[i]);
-}
-console.log(count);

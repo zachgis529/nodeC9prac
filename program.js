@@ -1,10 +1,15 @@
 var fs = require('fs')
 
-fs.readFile(process.argv[2], (err, data) => {
+fs.readdir(process.argv[2], (err, data) => {
   if (err) throw err;
-  var text = data.toString();
-  var array = text.split('\n');
-  console.log(array.length - 1);
+    
+  var filterArr = [];
+
+  for (i = 0; i < data.length; i++){
+    if ((data[i]).search("." + process.argv[3]) !== -1){
+      console.log(data[i]);
+    }
+  }  
 
 });
 

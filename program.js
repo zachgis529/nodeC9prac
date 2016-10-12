@@ -1,17 +1,14 @@
-var fs = require('fs')
+var module = require('./module');
 
-fs.readdir(process.argv[2], (err, data) => {
-  if (err) throw err;
-    
-  var filterArr = [];
+var directory = process.argv[2];
+var ext = process.argv[3]
 
-  for (i = 0; i < data.length; i++){
-    if ((data[i]).search("." + process.argv[3]) !== -1){
-      console.log(data[i]);
-    }
-  }  
+module(directory, ext, function(err, data){
+  if (err){
+    return console.error('There was an error:', err);
+  }
+  data.forEach(function(file){
+    console.log(file);
+  });
 
 });
-
-
-
